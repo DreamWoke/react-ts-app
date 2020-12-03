@@ -21,7 +21,7 @@ module.exports = merge(common, {
     new webpack.HotModuleReplacementPlugin(),
     new FriendlyErrorsWebpackPlugin({
       compilationSuccessInfo: {
-        messages: [`Your application is running here: "http"://${SERVER_HOST}:${SERVER_PORT}`],
+        messages: [`Your application is running here: http://${SERVER_HOST}:${SERVER_PORT}`],
       },
       // 错误信息用ForkTsCheckerWebpackPlugin，暂时注释这边
       // onErrors: (severity, errors) => {

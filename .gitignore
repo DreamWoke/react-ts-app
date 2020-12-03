@@ -2,5 +2,9 @@
 build/
 dist/
 
+# Log file
+package-lock.json
+yarn-error.log
+
 # Dependency directories
 node_modules/

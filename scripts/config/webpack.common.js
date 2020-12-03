@@ -74,7 +74,7 @@ module.exports = {
   plugins: [
     new WebpackBar({
       name: isDev ? "启动中..." : "打包中...",
-      color: green,
+      color: "green",
     }),
     new ForkTsCheckerWebpackPlugin({
       //ts错误显示在终端中

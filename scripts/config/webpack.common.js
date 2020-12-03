@@ -1,22 +1,23 @@
 const path = require("path")
-
 const { resolve } = path
 const TerserPlugin = require("terser-webpack-plugin")
-const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const { isDev, PROJECT_PATH } = require("../constants")
 const WebpackBar = require("webpackbar")
 const CopyPlugin = require("copy-webpack-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
 const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
-const { isDev, PROJECT_PATH } = require("../constants")
+const OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 
 module.exports = {
   entry: {
     app: resolve(PROJECT_PATH, "./src/index.tsx"),
   },
   output: {
-    filename: `js/[name].${isDev ? "" : "[hash:8]"}.js`,
+    filename: `static/js/[name].${isDev ? "" : "[hash:8]"}.js`,
     path: resolve(PROJECT_PATH, "./dist"),
   },
+
   resolve: {
     extensions: [".tsx", ".ts", ".js", ".json"],
     alias: {
@@ -37,7 +38,7 @@ module.exports = {
       {
         test: /\.(css|scss)$/,
         use: [
-          { loader: "style-loader" },
+          { loader: isDev ? "style-loader" : MiniCssExtractPlugin.loader },
           { loader: "css-loader" },
           { loader: "postcss-loader" },
           { loader: "sass-loader" },
@@ -73,12 +74,19 @@ module.exports = {
   plugins: [
     new WebpackBar({
       name: isDev ? "启动中..." : "打包中...",
-      color: "#35ba8c",
+      color: green,
     }),
     new ForkTsCheckerWebpackPlugin({
+      //ts错误显示在终端中
       typescript: {
         configFile: resolve(PROJECT_PATH, "./tsconfig.json"),
       },
+    }),
+    // !isDev &&
+    new MiniCssExtractPlugin({
+      filename: "static/css/[name].[contenthash:8].css",
+      chunkFilename: "static/css/[name].[contenthash:8].css",
+      ignoreOrder: false,
     }),
     new HtmlWebpackPlugin({
       title: "React+Typescript7",

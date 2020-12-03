@@ -78,7 +78,7 @@ module.exports = {
     ],
     "unicorn/prefer-query-selector": ERROR,
     "unicorn/no-null": OFF,
-
+    "no-use-before-define": OFF, // import React 报错？
     "@typescript-eslint/no-useless-constructor": ERROR,
     "@typescript-eslint/no-empty-function": WARN,
     "@typescript-eslint/no-var-requires": OFF,

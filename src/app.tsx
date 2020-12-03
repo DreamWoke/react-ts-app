@@ -5,7 +5,6 @@ interface IProps {
   name: string
   age: number
 }
-
 function App(props: IProps) {
   const { name, age } = props
   return (

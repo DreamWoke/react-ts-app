@@ -1,5 +1,3 @@
-# React+Typescript
-
 # React-Ts-App
 
 这是一个由 webpack 构建的 react + typescript 脚手架，主要包括了

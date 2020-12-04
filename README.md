@@ -112,16 +112,18 @@ webpack 默认是只能处理 js(babel-loader)，所以要加很多 loader 模�
 - html-webpack-plugin
 - copy-webpack-plugin
 
+  ```
   new CopyPlugin({
-  patterns: [
-  {
-  context: resolve(PROJECT_PATH, './public'), //将 public 的静态资源复制到 dist 中
-  from: '*',
-  to: resolve(PROJECT_PATH, './dist'),
-  toType: 'dir',
-  },
-  ],
+    patterns: [
+      {
+        context: resolve(PROJECT_PATH, './public'), //将public的静态资源复制到dist中
+        from: '*',
+        to: resolve(PROJECT_PATH, './dist'),
+        toType: 'dir',
+      },
+    ],
   }),
+  ```
 
 - mini-css-extract-plugin(把 css 单独打包)
 - clean-webpack-plugin(构建时会先把上次打包的文件清除)
@@ -133,12 +135,14 @@ webpack 默认是只能处理 js(babel-loader)，所以要加很多 loader 模�
 - fork-ts-checker-webpack-plugin(ts 文件的错误显示到终端)
 - friendly-errors-webpack-plugin(自定义本地运行后显示的内容，还给了一个 onErrors 函数，可以配置显示报错，因为用到了上面，就没开启)
 
-  new FriendlyErrorsWebpackPlugin({
-  compilationSuccessInfo: {
-  messages: [`Your application is running here: http://${SERVER_HOST}:${SERVER_PORT}`],
-  },
-  clearConsole: true, //这个很好用，每次清屏
-  })
+```
+    new FriendlyErrorsWebpackPlugin({
+      compilationSuccessInfo: {
+        messages: [`Your application is running here: http://${SERVER_HOST}:${SERVER_PORT}`],
+      },
+      clearConsole: true, //这个很好用，每次清屏
+    })
+```
 
 #### optimization
 

@@ -20,6 +20,14 @@
           },
           "useESModules": true
         }
+      ],
+      // antd样式按需引入
+      [
+        "import",
+        {
+          "libraryName": "antd",
+          "style": "css"
+        }
       ]
     ]
   }

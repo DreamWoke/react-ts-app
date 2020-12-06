@@ -1,21 +1,21 @@
 import React from "react"
-import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom"
+import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom"
 import Layout from "@/layout"
 import Hello from "@/pages/hello"
-import Lss from "@/pages/lss"
+import Login from "@/pages/login"
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <Router>
       <Switch>
-        <Route exact path="/" render={() => <Redirect to="/hello" />} />
         {/* login */}
-        <Route exact path="/lss" component={Lss} />
-        <Layout>
-          <Route exact path="/hello" component={Hello} />
-        </Layout>
+        <Route exact path="/login" component={Login} />
+        {/* kkk */}
+        <Route exact path="/" render={() => <Redirect to="/hello" />} />
+        <Layout />
+        <Route exact path="/hello" component={Hello} />
       </Switch>
-    </BrowserRouter>
+    </Router>
   )
 }
 

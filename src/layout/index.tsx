@@ -22,7 +22,7 @@ const BaseLayout = (props: any) => {
     <Layout className="basic-layout">
       <Header className="header">
         <span className="logo">
-          <Image className="logo-img" src={LogoImg} />
+          <Image preview={false} className="logo-img" src={LogoImg} />
         </span>
       </Header>
       <Layout>

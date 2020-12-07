@@ -1,8 +1,9 @@
 import React from "react"
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom"
 import Layout from "@/layout"
-import Hello from "@/pages/hello"
 import Login from "@/pages/login"
+import First from "@/pages/first"
+import Second from "@/pages/second"
 
 const App = () => {
   return (
@@ -10,10 +11,12 @@ const App = () => {
       <Switch>
         {/* login */}
         <Route exact path="/login" component={Login} />
-        {/* kkk */}
-        <Route exact path="/" render={() => <Redirect to="/hello" />} />
-        <Layout />
-        <Route exact path="/hello" component={Hello} />
+        {/* business */}
+        <Route exact path="/" render={() => <Redirect to="/first" />} />
+        <Layout>
+          <Route exact path="/first" component={First} />
+          <Route exact path="/second" component={Second} />
+        </Layout>
       </Switch>
     </Router>
   )

@@ -1,7 +1,7 @@
 import React from "react"
 
 const Hello = () => {
-  return <div>home</div>
+  return <div>second</div>
 }
 
 export default Hello

@@ -14,7 +14,7 @@ module.exports = {
     app: resolve(PROJECT_PATH, "./src/index.tsx"),
   },
   output: {
-    filename: `static/js/[name].${isDev ? "" : "[hash:8]"}.js`,
+    filename: `static/js/[name]${isDev ? "" : "[hash:8]"}.js`,
     path: resolve(PROJECT_PATH, "./dist"),
   },
 
@@ -138,7 +138,7 @@ module.exports = {
           minChunks: 2,
         },
         vendor: {
-          test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+          test: /[\\/]node_modules[\\/]/,
           name: "vendor",
           chunks: "all",
         },

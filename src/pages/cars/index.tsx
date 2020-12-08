@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { PageHeader, Card } from "antd"
-import CarDialog from "Components/CarDialog"
+import CarDialog from "@/pages/cars/CarDialog"
 import ProductCard from "Components/ProductCard"
 import "./index.scss"
 
@@ -29,10 +29,19 @@ const First = () => {
     { id: "16", name: "cars2", price: 100 },
   ])
   const [dialogVisible, setDialogVisible] = useState<boolean>(false)
-  const [chooseInfo, setChooseInfo] = useState<dataType | "">("")
+  const [chooseInfo, setChooseInfo] = useState<dataType>()
   const openDialog = (Info: dataType) => {
     setChooseInfo(Info)
     setDialogVisible(true)
+  }
+  const renderDialogBody = () => {
+    return (
+      <>
+        <div>id:{chooseInfo?.id}</div>
+        <div>名称:{chooseInfo?.name}</div>
+        <div>价格:¥{chooseInfo?.price}</div>
+      </>
+    )
   }
   return (
     <>
@@ -47,7 +56,7 @@ const First = () => {
       <CarDialog
         visible={dialogVisible}
         title="添加到购物车"
-        Info={chooseInfo}
+        Info={renderDialogBody()}
         onCancel={() => setDialogVisible(false)}
       />
     </>

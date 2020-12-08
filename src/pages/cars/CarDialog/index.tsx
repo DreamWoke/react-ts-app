@@ -14,9 +14,12 @@ const CarDialog = (props: CarDialogType) => {
   const [loading, setLoading] = useState<boolean>(false)
   const [count, setCount] = useState<number>(1)
   const handleOk = () => {
-    // 增加数量
-    console.log(props)
+    // 把商品信息+数量传给
+    console.log(props, count)
   }
+  useEffect(() => {
+    console.log(props)
+  }, [])
   const afterClose = () => {
     setCount(1)
   }
@@ -41,9 +44,7 @@ const CarDialog = (props: CarDialogType) => {
       onOk={handleOk}
       footer={renderCount()}
     >
-      <div>id:{props.Info.id}</div>
-      <div>名称:{props.Info.name}</div>
-      <div>价格:¥{props.Info.price}</div>
+      {props.Info}
     </Modal>
   )
 }

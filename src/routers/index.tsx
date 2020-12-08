@@ -2,7 +2,7 @@ import React from "react"
 import { BrowserRouter as Router, Redirect, Route, Switch } from "react-router-dom"
 import Layout from "@/layout"
 import Login from "@/pages/login"
-import First from "@/pages/first"
+import First from "@/pages/cars"
 import Second from "@/pages/second"
 
 const App = () => {
@@ -12,9 +12,9 @@ const App = () => {
         {/* login */}
         <Route exact path="/login" component={Login} />
         {/* business */}
-        <Route exact path="/" render={() => <Redirect to="/first" />} />
+        <Route exact path="/" render={() => <Redirect to="/cars" />} />
         <Layout>
-          <Route exact path="/first" component={First} />
+          <Route exact path="/cars" component={First} />
           <Route exact path="/second" component={Second} />
         </Layout>
       </Switch>

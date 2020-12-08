@@ -34,8 +34,8 @@ const BaseLayout = (props: any) => {
             selectedKeys={[selectKey]}
             style={{ height: "100%", borderRight: 0 }}
           >
-            <Menu.Item key="first" icon={<UserOutlined />}>
-              <Link to="/first">first</Link>
+            <Menu.Item key="cars" icon={<UserOutlined />}>
+              <Link to="/cars">cars</Link>
             </Menu.Item>
             <Menu.Item key="second" icon={<UserOutlined />}>
               <Link to="/second">second</Link>

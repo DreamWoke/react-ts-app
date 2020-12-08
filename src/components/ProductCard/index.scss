@@ -1,0 +1,11 @@
+.card {
+  .productCard-footer {
+    display: flex;
+    justify-content: space-between;
+
+    .price {
+      color: #e1251b;
+      font-size: 16px;
+    }
+  }
+}

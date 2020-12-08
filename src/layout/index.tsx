@@ -12,7 +12,7 @@ const BaseLayout = (props: any) => {
   const [selectKey, setSelectKey] = useState("")
   useEffect(() => {
     // 路由守卫写在这里？如果只是业务代码鉴权的话可行
-    setSelectKey("first")
+    setSelectKey("cars")
     console.log(history)
   }, [history])
   const handleClick = (e: any) => {

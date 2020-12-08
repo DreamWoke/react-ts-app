@@ -10,19 +10,17 @@ type dataType = {
   price: number
 }
 interface ProductCardProps {
-  Info: dataType
   key: string
+  Info: dataType
+  addProduct: () => void
 }
 
-const ProductCard = ({ Info }: ProductCardProps) => {
-  const addProduct = () => {
-    console.log(Info.id)
-  }
+const ProductCard = ({ addProduct, Info }: ProductCardProps) => {
   const description = (item: dataType) => {
     return (
       <div className="productCard-footer">
         <span className="price">¥{item.price}</span>
-        <Button type="primary" size="small" onClick={addProduct}>
+        <Button type="primary" size="small" onClick={() => addProduct()}>
           加入购物车
         </Button>
       </div>

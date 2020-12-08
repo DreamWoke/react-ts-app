@@ -78,6 +78,8 @@ module.exports = {
     ],
     "unicorn/prefer-query-selector": ERROR,
     "unicorn/no-null": OFF,
+    "unicorn/consistent-function-scoping": OFF,
+
     "no-use-before-define": OFF, // import React 报错？
     "@typescript-eslint/no-useless-constructor": ERROR,
     "@typescript-eslint/no-empty-function": WARN,
@@ -99,7 +101,12 @@ module.exports = {
 
     "jsx-a11y/click-events-have-key-events": OFF,
     "jsx-a11y/no-noninteractive-element-interactions": OFF,
-
+    "jsx-a11y/no-static-element-interactions": [
+      ERROR,
+      {
+        handlers: ["onMouseDown", "onMouseUp", "onKeyPress", "onKeyDown", "onKeyUp"],
+      },
+    ],
     "lines-between-class-members": [ERROR, "always"],
     // indent: [ERROR, 2, { SwitchCase: 1 }],
     quotes: [ERROR, "double"],

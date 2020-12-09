@@ -3,6 +3,10 @@
   .count-item {
     cursor: pointer;
     border: 1px solid #cccccc;
+    border-right: none;
     padding: 5px 10px;
+  }
+  .count-item:last-child {
+    border-right: 1px solid #cccccc;
   }
 }

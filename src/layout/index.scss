@@ -2,15 +2,22 @@
   height: 100%;
   .header {
     display: flex;
+    justify-content: space-between;
     .logo {
       width: 100px;
       margin-right: 50px;
       text-align: center;
       color: #ffffff;
       .logo-img {
-        width: 30px;
+        width: 40px;
       }
     }
+    .header-right {
+    }
+  }
+  .ant-menu > .ant-menu-item {
+    margin-top: 0px;
+    margin-bottom: 4px;
   }
   .content {
     background: #f8f8f8;

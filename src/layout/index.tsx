@@ -3,11 +3,16 @@ import { Link, useHistory } from "react-router-dom"
 import { Layout, Menu, Image } from "antd"
 import { UserOutlined } from "@ant-design/icons"
 import LogoImg from "@/image/react.png"
+import ShoppingCart from "./ShoppingCart"
+// import { useSelector, useDispatch } from "react-redux"
+// import { add, reduce } from "@/redux/action"
 import "./index.scss"
 
 const { Header, Sider } = Layout
 
 const BaseLayout = (props: any) => {
+  // const dispatch = useDispatch()
+  // const countx = useSelector((state: any) => state.countx)
   const history = useHistory()
   const [selectKey, setSelectKey] = useState("")
   useEffect(() => {
@@ -24,6 +29,9 @@ const BaseLayout = (props: any) => {
         <span className="logo">
           <Image preview={false} className="logo-img" src={LogoImg} />
         </span>
+        <div className="header-right">
+          <ShoppingCart />
+        </div>
       </Header>
       <Layout>
         <Sider width={200} className="site-layout-background">
@@ -33,6 +41,7 @@ const BaseLayout = (props: any) => {
             onSelect={handleClick}
             selectedKeys={[selectKey]}
             style={{ height: "100%", borderRight: 0 }}
+            className="sider-menus"
           >
             <Menu.Item key="cars" icon={<UserOutlined />}>
               <Link to="/cars">cars</Link>

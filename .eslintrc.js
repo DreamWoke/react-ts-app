@@ -113,6 +113,7 @@ module.exports = {
     semi: [ERROR, "never"],
     "no-unused-expressions": WARN,
     "no-console": OFF,
+    "promise/always-return": OFF,
     "class-methods-use-this": ERROR,
     "jsx-quotes": [ERROR, "prefer-double"],
     "global-require": OFF,

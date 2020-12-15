@@ -4,8 +4,6 @@ import { Layout, Menu, Image } from "antd"
 import { UserOutlined } from "@ant-design/icons"
 import LogoImg from "@/image/react.png"
 import ShoppingCart from "./ShoppingCart"
-// import { useSelector, useDispatch } from "react-redux"
-// import { add, reduce } from "@/redux/action"
 import "./index.scss"
 
 const { Header, Sider } = Layout

@@ -130,19 +130,19 @@ module.exports = {
         }),
       !isDev && new OptimizeCssAssetsPlugin(),
     ].filter(Boolean),
-    splitChunks: {
-      cacheGroups: {
-        commons: {
-          name: "commons",
-          chunks: "initial",
-          minChunks: 2,
-        },
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: "vendor",
-          chunks: "all",
-        },
-      },
-    },
+    // splitChunks: {
+    //   cacheGroups: {
+    //     commons: {
+    //       name: "commons",
+    //       chunks: "initial",
+    //       minChunks: 2,
+    //     },
+    //     vendor: {
+    //       test: /[\\/]node_modules[\\/]/,
+    //       name: "vendor",
+    //       chunks: "all",
+    //     },
+    //   },
+    // },
   },
 }

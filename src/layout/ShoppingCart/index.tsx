@@ -1,13 +1,13 @@
 import React from "react"
 import { ShoppingCartOutlined } from "@ant-design/icons"
-import { useSelector, useDispatch } from "react-redux"
-import { addCount } from "@/redux/action"
+import { useSelector } from "react-redux"
+// import { addCount } from "@/redux/action"
 import { Badge } from "antd"
 import "./index.scss"
 
 const ShoppingCart = () => {
   const count = useSelector((state: any) => state.count)
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   return (
     <>
       <div className="shopping-cart">

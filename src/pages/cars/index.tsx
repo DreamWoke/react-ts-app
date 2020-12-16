@@ -10,7 +10,7 @@ type dataType = {
   price: number
 }
 const First = () => {
-  const [data, setData] = useState<dataType[]>([
+  const [data] = useState<dataType[]>([
     { id: "1", name: "cars1", price: 200 },
     { id: "2", name: "cars2", price: 100 },
     { id: "3", name: "cars2", price: 100 },

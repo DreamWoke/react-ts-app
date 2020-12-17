@@ -3,8 +3,7 @@ import { Link, useHistory } from "react-router-dom"
 import { Layout, Menu, Image } from "antd"
 import { UserOutlined } from "@ant-design/icons"
 import LogoImg from "@/image/react.png"
-import Service from "@/service"
-import Axios from "axios"
+// import Service from "@/service"
 import ShoppingCart from "./ShoppingCart"
 import "./index.scss"
 
@@ -16,11 +15,9 @@ const BaseLayout = (props: any) => {
   const history = useHistory()
   const [selectKey, setSelectKey] = useState("")
   useEffect(() => {
-    // 路由守卫写在这里？如果只是业务代码鉴权的话可行
-    setSelectKey("cars")
+    // 路由守卫写在这里？只是token鉴权
     console.log(history)
-    Service({ url: "login", data: { name: "root", password: "123456" } })
-    // Axios.get("/api/login")
+    // Service({ url: "login", data: { name: "root", password: "123456" } })
   }, [history])
   const handleClick = (e: any) => {
     setSelectKey(e.key)

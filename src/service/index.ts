@@ -9,13 +9,18 @@ interface ServiceParams<T extends keyof RequestList> extends AxiosRequestConfig 
   url: T
   data: RequestList[T]["params"]
 }
+// interface ServiceResponse<T> extends AxiosPromise {
+//   code: number
+//   data: T
+//   message?: string
+// }
 
 type RequestFunc = <T extends keyof RequestList>(params: ServiceParams<T>) => AxiosPromise<RequestList[T]["response"]>
 
 // const Domain = "http://localhost:3000"
 const BaseURL = "/api"
 const AxiosInstance = axios.create({
-  method: "GET",
+  method: "POST",
   timeout: 10000,
   withCredentials: false,
   // baseURL: "/api",
@@ -85,12 +90,8 @@ AxiosInstance.interceptors.request.use((config) => {
 
 AxiosInstance.interceptors.response.use((response) => {
   const res = response.data
-  console.log(res)
   if (res.code === 0) {
-    return {
-      ...response,
-      ...res,
-    }
+    return res
   }
   // Message({
   //   message: res.message || res.errorMsg || "Error",

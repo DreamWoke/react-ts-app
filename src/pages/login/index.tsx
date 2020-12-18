@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
+import { useHistory } from "react-router-dom"
 import { Button, Form, Input } from "antd"
-import "./index.scss"
+import { setToken } from "@/utils/token"
 import Service from "@/service"
+
+import "./index.scss"
 
 const layout = {
   labelCol: { span: 0 },
@@ -10,20 +13,24 @@ const layout = {
 const tailLayout = {
   wrapperCol: { offset: 0, span: 24 },
 }
+
 interface loginFormType {
   name: string
   password: string
 }
 const Login = () => {
-  const [formData, setFormData] = useState<loginFormType>({
-    name: "",
-    password: "",
-  })
-  useEffect(() => {
-    // Service({ url: "login", data: { name: "root", password: "123456" } })
-  }, [])
+  const history = useHistory()
+  const [loading, setLoading] = useState<boolean>(false)
   const loginSubmit = (form: loginFormType) => {
-    console.log(form)
+    setLoading(true)
+    Service({ url: "login", data: form })
+      .then(({ data }) => {
+        setToken(data.token)
+        history.push("/cars")
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }
   // const onFinishFailed = () => {
   //   console.log("fas")
@@ -34,7 +41,7 @@ const Login = () => {
         <div className="login-content">
           <div className="login-logo" />
           <div className="login-inner">
-            <div className="header">登录</div>
+            <div className="header">LOGIN</div>
             <div className="body">
               <Form
                 {...layout}
@@ -51,7 +58,7 @@ const Login = () => {
                   <Input.Password className="password-input" bordered={false} placeholder="请输入密码" />
                 </Form.Item>
                 <Form.Item className="btn-group" {...tailLayout}>
-                  <Button className="login-submit" type="primary" htmlType="submit">
+                  <Button className="login-submit" loading={loading} type="primary" htmlType="submit">
                     登录
                   </Button>
                 </Form.Item>

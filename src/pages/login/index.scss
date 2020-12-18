@@ -20,7 +20,7 @@ $namespace: "login";
     overflow: auto;
     .#{$namespace}-logo {
       width: 160px;
-      height: 64px;
+      height: 56px;
       border-radius: 4px;
       margin-bottom: 24px;
       background: url("../../image/logo.jpg");
@@ -43,13 +43,17 @@ $namespace: "login";
         height: 60px;
         line-height: 60px;
         text-align: center;
-        color: #333333;
+        color: #164f66;
         font-size: 20px;
+        letter-spacing: 2px;
         font-weight: 600;
       }
       .body {
         .login-form {
           margin-top: 24px;
+          input:-webkit-autofill {
+            box-shadow: 0 0 0px 1000px white inset !important;
+          }
           .ant-form-item-control-input {
             border-bottom: 1px solid #ebebeb;
             :focus {

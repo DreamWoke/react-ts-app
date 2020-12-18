@@ -81,6 +81,7 @@ module.exports = {
     "unicorn/consistent-function-scoping": OFF,
 
     "no-use-before-define": OFF, // import React 报错？
+    "promise/catch-or-return": OFF, // no catch
     "@typescript-eslint/no-useless-constructor": ERROR,
     "@typescript-eslint/no-empty-function": WARN,
     "@typescript-eslint/no-var-requires": OFF,

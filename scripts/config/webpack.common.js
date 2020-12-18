@@ -89,7 +89,7 @@ module.exports = {
       ignoreOrder: false,
     }),
     new HtmlWebpackPlugin({
-      title: "react-ts-app",
+      title: "fly-candy",
       template: resolve(PROJECT_PATH, "./public/index.html"),
       filename: "index.html",
       cache: false, // 特别重要：防止之后使用v6版本 copy-webpack-plugin 时代码修改一刷新页面为空问题。

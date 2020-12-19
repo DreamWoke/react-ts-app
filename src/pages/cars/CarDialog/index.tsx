@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react"
 import Count from "Components/Count"
-import { useDispatch } from "react-redux"
 import { Modal, Button, message } from "antd"
-import { addCount } from "@/redux/action"
 import "./index.scss"
 
 interface CarDialogType {
@@ -13,19 +11,15 @@ interface CarDialogType {
 }
 
 const CarDialog = (props: CarDialogType) => {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
   // const [loading, setLoading] = useState<boolean>(false)
   const [count, setCount] = useState<number>(1)
   const handleOk = () => {
     // 把商品信息+数量传给reducer
-    console.log(props, count)
-    dispatch(addCount(count))
+    // dispatch(addCount(count))
     props.onCancel()
     message.success("添加成功！")
   }
-  useEffect(() => {
-    console.log(props)
-  }, [])
   const afterClose = () => {
     setCount(1)
   }

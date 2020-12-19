@@ -1,7 +1,7 @@
 const proxySettings = {
   // 接口代理1
   "/api": {
-    target: "http://localhost:3000",
+    target: "http://localhost",
     changeOrigin: true,
   },
 }

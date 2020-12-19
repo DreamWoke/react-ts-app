@@ -6,12 +6,12 @@ import { Badge } from "antd"
 import "./index.scss"
 
 const ShoppingCart = () => {
-  const count = useSelector((state: any) => state.count)
+  // const count = useSelector((state: any) => state.count)
   // const dispatch = useDispatch()
   return (
     <>
       <div className="shopping-cart">
-        <Badge count={count} offset={[6, 0]} size="small">
+        <Badge count={1} offset={[6, 0]} size="small">
           <ShoppingCartOutlined className="svg-cart" />
         </Badge>
       </div>

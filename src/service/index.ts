@@ -1,13 +1,14 @@
 import axios, { AxiosPromise, AxiosRequestConfig } from "axios"
 // import { toLogin } from "@/utils/function"
-// import { getToken } from "@/utils/token"
+import { getToken } from "@/utils/token"
 // import store from "@/store"
-import { message } from "antd"
+import { message, notification } from "antd"
 import { RequestList } from "@/service/modules"
 
 interface ServiceParams<T extends keyof RequestList> extends AxiosRequestConfig {
   url: T
-  data: RequestList[T]["params"]
+  data?: RequestList[T]["params"]
+  // params?: RequestList[T]["params"]
 }
 // interface ServiceResponse<T> extends AxiosPromise {
 //   code: number
@@ -70,21 +71,19 @@ const processError = async (error: any) => {
     }
   }
 
-  // Notification({
-  //   title: "系统错误",
-  //   dangerouslyUseHTMLString: true,
-  //   message: error.message,
-  //   type: "error",
-  //   duration: 5 * 1000,
-  // })
+  // 错误提醒
+  notification.error({
+    message: "系统错误",
+    description: error.message,
+  })
 
   return Promise.reject(error)
 }
+// 拦截器
 AxiosInstance.interceptors.request.use((config) => {
-  console.log(config)
   config.url = `${BaseURL}/${config.url}`
-  config.headers["Content-Type"] = ["application/json"] // 为mock增加，联调时考虑删除
-  // config.headers.Authorization = getToken()
+  // config.headers["Content-Type"] = ["application/json"] // 为mock增加，联调时考虑删除
+  config.headers.Authorization = getToken()
   return config
 })
 

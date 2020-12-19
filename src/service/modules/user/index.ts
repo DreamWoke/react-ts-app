@@ -1,17 +1,17 @@
 import { RequestDefine } from ".."
-import { LoginParam } from "./param"
-import { LoginResponse } from "./response"
+import { LoginParam, UserParam } from "./param"
+import { LoginResponse, UserResponse } from "./response"
 
 export interface User {
   id: number
   name: string
   cellphone: string
   identity: string
-  password: string
 }
 
 interface UserApiMap {
   login: RequestDefine<LoginParam, LoginResponse>
+  user: RequestDefine<UserParam, UserResponse>
 }
 
 export default UserApiMap

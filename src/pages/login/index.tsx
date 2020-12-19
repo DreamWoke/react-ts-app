@@ -32,9 +32,6 @@ const Login = () => {
         setLoading(false)
       })
   }
-  // const onFinishFailed = () => {
-  //   console.log("fas")
-  // }
   return (
     <div>
       <div className="login">

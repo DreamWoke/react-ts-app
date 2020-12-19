@@ -1,7 +1,8 @@
-export const addCount = (count: number) => {
+import actionTypes from "./actionTypes"
+
+export const userInfo = () => {
   return {
-    type: "addCount",
-    count,
+    type: actionTypes.ASYNC_SAVEUSERINFO,
   }
 }
 

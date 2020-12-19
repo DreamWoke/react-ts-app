@@ -1,24 +1,35 @@
 import React, { useEffect, useState } from "react"
+import { getToken } from "@/utils/token"
+import { Layout, Menu } from "antd"
 import { Link, useHistory } from "react-router-dom"
-import { Layout, Menu, Image } from "antd"
-import { UserOutlined } from "@ant-design/icons"
-import LogoImg from "@/image/react.png"
-// import Service from "@/service"
+import Icon, { UserOutlined } from "@ant-design/icons"
+import CandySvg from "@/common/svgComponents/CandySvg"
+import { userInfo } from "@/redux/action"
+import { useDispatch } from "react-redux"
 import ShoppingCart from "./ShoppingCart"
+import SlideMap from "./constants"
 import "./index.scss"
 
 const { Header, Sider } = Layout
-
 const BaseLayout = (props: any) => {
-  // const dispatch = useDispatch()
-  // const countx = useSelector((state: any) => state.countx)
+  const dispatch = useDispatch()
+
   const history = useHistory()
-  const [selectKey, setSelectKey] = useState("")
+  const [selectKey, setSelectKey] = useState<string>("")
+
   useEffect(() => {
-    // 路由守卫写在这里？只是token鉴权
-    console.log(history)
-    // Service({ url: "login", data: { name: "root", password: "123456" } })
+    const { location } = history
+    const activeSlide = SlideMap.find((item) => item.pathname === location.pathname)
+    setSelectKey(activeSlide?.key || SlideMap[0].key)
+    const token = getToken()
+    if (token) {
+      // 获取用户信息存到redux中
+      dispatch(userInfo())
+    } else {
+      history.push("/login")
+    }
   }, [history])
+
   const handleClick = (e: any) => {
     setSelectKey(e.key)
   }
@@ -26,7 +37,7 @@ const BaseLayout = (props: any) => {
     <Layout className="basic-layout">
       <Header className="header">
         <span className="logo">
-          <Image preview={false} className="logo-img" src={LogoImg} />
+          <Icon component={() => <CandySvg width="40" height="40" />} style={{ height: "100%" }} className="logo-img" />
         </span>
         <div className="header-right">
           <ShoppingCart />
@@ -42,12 +53,19 @@ const BaseLayout = (props: any) => {
             style={{ height: "100%", borderRight: 0 }}
             className="sider-menus"
           >
-            <Menu.Item key="cars" icon={<UserOutlined />}>
+            {SlideMap.map((item) => {
+              return (
+                <Menu.Item key={item.key} icon={<UserOutlined />}>
+                  <Link to={item.pathname}>{item.name}</Link>
+                </Menu.Item>
+              )
+            })}
+            {/* <Menu.Item key="cars" icon={<UserOutlined />}>
               <Link to="/cars">cars</Link>
-            </Menu.Item>
-            <Menu.Item key="second" icon={<UserOutlined />}>
+            </Menu.Item> */}
+            {/* <Menu.Item key="second" icon={<UserOutlined />}>
               <Link to="/second">second</Link>
-            </Menu.Item>
+            </Menu.Item> */}
           </Menu>
         </Sider>
         <Layout className="content">{props.children}</Layout>

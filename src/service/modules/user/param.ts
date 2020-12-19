@@ -1,3 +1,6 @@
-import { User } from "."
+export type LoginParam = {
+  name: string
+  password: string
+}
 
-export type LoginParam = Pick<User, "name" | "password">
+export type UserParam = any

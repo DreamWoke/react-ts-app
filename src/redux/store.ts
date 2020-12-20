@@ -8,8 +8,6 @@ const sagaMiddleware = createSagaMiddleware()
 const initialState = {
   userInfo: "",
 }
-
-console.log(process.env.NODE_ENV)
 const storeEnhancers =
   process.env.NODE_ENV === "development" // 仅在development环境开启
     ? compose(

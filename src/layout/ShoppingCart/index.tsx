@@ -11,7 +11,7 @@ const ShoppingCart = () => {
   return (
     <>
       <div className="shopping-cart">
-        <Badge count={1} offset={[6, 0]} size="small">
+        <Badge count={99} offset={[6, 0]} size="small">
           <ShoppingCartOutlined className="svg-cart" />
         </Badge>
       </div>

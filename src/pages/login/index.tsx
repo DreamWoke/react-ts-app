@@ -26,9 +26,10 @@ const Login = () => {
     Service({ url: "login", data: form })
       .then(({ data }) => {
         setToken(data.token)
+        setLoading(false)
         history.push("/cars")
       })
-      .finally(() => {
+      .catch(() => {
         setLoading(false)
       })
   }

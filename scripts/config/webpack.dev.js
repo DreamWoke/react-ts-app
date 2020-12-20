@@ -13,7 +13,7 @@ module.exports = merge(common, {
     port: SERVER_PORT, // 指定端口，默认是8080
     clientLogLevel: "silent", // 日志等级
     compress: true, // 是否启用 gzip 压缩
-    open: true, // 打开默认浏览器
+    open: false, // 打开默认浏览器
     hot: true, // 热更新
     inline: true,
     historyApiFallback: true,

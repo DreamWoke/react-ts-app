@@ -4,9 +4,10 @@ import { Layout, Menu } from "antd"
 import { Link, useHistory } from "react-router-dom"
 import Icon, { UserOutlined } from "@ant-design/icons"
 import CandySvg from "@/common/svgComponents/CandySvg"
-import { userInfo } from "@/redux/action"
+import { actionCreator, actionTypes } from "@/redux/action"
 import { useDispatch } from "react-redux"
 import ShoppingCart from "./ShoppingCart"
+import User from "./User"
 import SlideMap from "./constants"
 import "./index.scss"
 
@@ -24,7 +25,7 @@ const BaseLayout = (props: any) => {
     const token = getToken()
     if (token) {
       // 获取用户信息存到redux中
-      dispatch(userInfo())
+      dispatch(actionCreator(actionTypes.ASYNC_SAVEUSERINFO))
     } else {
       history.push("/login")
     }
@@ -41,6 +42,7 @@ const BaseLayout = (props: any) => {
         </span>
         <div className="header-right">
           <ShoppingCart />
+          <User />
         </div>
       </Header>
       <Layout>
@@ -60,12 +62,6 @@ const BaseLayout = (props: any) => {
                 </Menu.Item>
               )
             })}
-            {/* <Menu.Item key="cars" icon={<UserOutlined />}>
-              <Link to="/cars">cars</Link>
-            </Menu.Item> */}
-            {/* <Menu.Item key="second" icon={<UserOutlined />}>
-              <Link to="/second">second</Link>
-            </Menu.Item> */}
           </Menu>
         </Sider>
         <Layout className="content">{props.children}</Layout>

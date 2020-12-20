@@ -1,14 +1,15 @@
-import actionTypes from "./actionTypes"
-
-export const userInfo = () => {
-  return {
-    type: actionTypes.ASYNC_SAVEUSERINFO,
-  }
+export const actionTypes = {
+  // action
+  SAVEUSERINFO: "saveUserInfo",
+  REMOVEUSERINFO: "removeUserInfo",
+  // async action
+  ASYNC_SAVEUSERINFO: "asyncSaveUserInfo",
+  ASYNC_LOGOUT: "asyncLogout",
 }
 
-export const reduce = (count: number) => {
+export const actionCreator = (type: string, payload?: any) => {
   return {
-    type: "reduceCount",
-    count,
+    type,
+    payload,
   }
 }

@@ -1,20 +1,16 @@
 import axios, { AxiosPromise, AxiosRequestConfig } from "axios"
 // import { toLogin } from "@/utils/function"
-import { getToken } from "@/utils/token"
+import { getToken, removeToken } from "@/utils/token"
 // import store from "@/store"
 import { message, notification } from "antd"
 import { RequestList } from "@/service/modules"
 
+// eslint-disable-next-line react-hooks/rules-of-hooks
 interface ServiceParams<T extends keyof RequestList> extends AxiosRequestConfig {
   url: T
   data?: RequestList[T]["params"]
   // params?: RequestList[T]["params"]
 }
-// interface ServiceResponse<T> extends AxiosPromise {
-//   code: number
-//   data: T
-//   message?: string
-// }
 
 type RequestFunc = <T extends keyof RequestList>(params: ServiceParams<T>) => AxiosPromise<RequestList[T]["response"]>
 
@@ -26,6 +22,7 @@ const AxiosInstance = axios.create({
   withCredentials: false,
   // baseURL: "/api",
 })
+
 const processError = async (error: any) => {
   // 这边处理http的错误状态 而不处理返回中的如  respCode 的错误信息
   if (error && error.response) {
@@ -35,9 +32,9 @@ const processError = async (error: any) => {
         error.message = "请求错误"
         break
       case 401:
-        // await store.dispatch("user/resetToken")
         error.message = "未授权，请登录"
-        // toLogin()
+        await removeToken()
+        window.location.href = "/login"
         break
       case 403:
         error.message = "拒绝访问"
@@ -69,6 +66,7 @@ const processError = async (error: any) => {
       default:
         break
     }
+    return ""
   }
 
   // 错误提醒
@@ -92,11 +90,6 @@ AxiosInstance.interceptors.response.use((response) => {
   if (res.code === 0) {
     return res
   }
-  // Message({
-  //   message: res.message || res.errorMsg || "Error",
-  //   type: "error",
-  //   duration: 3 * 1000,
-  // })
   message.error(res.message || res.errorMsg || "Error")
   return Promise.reject(res)
 }, processError)

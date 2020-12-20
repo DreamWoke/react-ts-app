@@ -1,10 +1,11 @@
 import { put, call } from "redux-saga/effects"
 import Service from "@/service"
-import actionTypes from "../action/actionTypes"
+import { removeToken } from "@/utils/token"
+import { actionTypes } from "../action"
 
 const fetchUserInfo = () => {
   return new Promise((resolve, reject) => {
-    Service({ url: "user" })
+    Service({ url: "user", method: "GET" })
       .then(({ data }) => {
         resolve(data)
       })
@@ -13,10 +14,17 @@ const fetchUserInfo = () => {
       })
   })
 }
+const toLogout = () => {
+  Service({ url: "logout" }).then(() => {
+    removeToken()
+    put({ type: actionTypes.REMOVEUSERINFO })
+  })
+}
 
-export function* removeUserInfo() {
-  yield console.log("remove函数触发了")
-  console.log("remove")
+export function* logoutUser() {
+  yield call(toLogout)
+
+  // yield put({ type: actionTypes.REMOVEUSERINFO })// yield removeToken()
 }
 
 export function* updateUserInfo() {

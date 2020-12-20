@@ -6,3 +6,4 @@ export type LoginResponse = {
 }
 
 export type UserResponse = User
+export type LogoutResponse = any

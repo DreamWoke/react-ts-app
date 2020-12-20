@@ -1,0 +1,19 @@
+.user {
+  cursor: pointer;
+  margin-left: 30px;
+  margin-right: -35px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  .svg-user {
+    font-size: 20px;
+    margin-right: 1px;
+  }
+  .username {
+    display: flex;
+    align-items: center;
+    // margin-top: 3px;
+    font-size: 16px;
+    height: 22px;
+  }
+}

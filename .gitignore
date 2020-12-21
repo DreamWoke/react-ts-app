@@ -1,6 +1,6 @@
 # Custom ignore
 build/
-
+/dist
 # Log file
 package-lock.json
 yarn-error.log

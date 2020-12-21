@@ -10,8 +10,21 @@ on:
 jobs:
   build:
     runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node-version: [10.16.0] # 配置所需node版本
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install yarn # 安装yarn
+        run: npm install yarn -g
+      - name: Install dependencies # 安装依赖
+        run: yarn install
+      - name: Install dependencies # 打包代码
+        run: yarn build
       - name: Install coscmd
         run: sudo pip install coscmd
       - name: Configure coscmd

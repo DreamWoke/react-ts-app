@@ -52,6 +52,13 @@ vscode 安装 Prettier 和 Eslint 插件，setting.json 配置部分详解如下
         "source.fixAll.eslint": true //同上
     }
 
+#### CI
+
+##### Github Actions+COS
+
+因为代码托管在 Github,所以使用了 Github 自带的 actions,优点是比较便捷。
+因为服务器也是腾讯云服务器,存储桶选用了腾讯云的 COS(有提供 CDN 服务).
+
 ### WebPack
 
 #### webpack 基本配置
@@ -156,6 +163,5 @@ webpack4 开始，会根据 mode 来执行优化，如果要手动配置，可�
 
 ### 接下来要做的？
 
-- CI
 - 项目文件目录规范
 - ...

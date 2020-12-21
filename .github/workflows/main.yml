@@ -14,10 +14,10 @@ jobs:
       - name: Configure coscmd
         env:
           SECRET_ID: ${{secrets.SecretId}}
-          SECRET_Key: ${{secrets.SecretKey}}
+          SECRET_KEY: ${{secrets.SecretKey}}
           BUCKET: console-1300990907
           REGION: ap-shanghai
-        run: coscmd config -a $SECRET_ID -s $SECRET_Key -b $BUCKET -r REGION
+        run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r REGION
       - name: Upload
         run: coscmd upload -rs --delete -f ./dist /
         

@@ -1,6 +1,5 @@
 # Custom ignore
 build/
-dist/
 
 # Log file
 package-lock.json

@@ -11,14 +11,13 @@ import "./index.scss"
 const ShoppingCart = () => {
   const history = useHistory()
   const dispatch = useDispatch()
-  const handleMenuClick = () => {}
   const Logout = async () => {
     dispatch(actionCreator(actionTypes.ASYNC_LOGOUT))
     history.push("/login")
   }
   const userInfo = useSelector((state: any) => state.userInfo)
   const menu = (
-    <Menu onClick={handleMenuClick}>
+    <Menu>
       <Menu.Item key="1" icon={<UserOutlined />}>
         个人中心
       </Menu.Item>

@@ -1,7 +1,7 @@
 const path = require("path")
 const { resolve } = path
 const TerserPlugin = require("terser-webpack-plugin")
-const { isDev, PROJECT_PATH } = require("../constants")
+const { isDev, PROJECT_NAME, PROJECT_PATH, PUBLIC_PATH } = require("../constants")
 const WebpackBar = require("webpackbar")
 const CopyPlugin = require("copy-webpack-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
@@ -14,9 +14,9 @@ module.exports = {
     app: resolve(PROJECT_PATH, "./src/index.tsx"),
   },
   output: {
-    publicPath: isDev ? resolve(PROJECT_PATH, "./dist") : "https://console-1300990907.file.myqcloud.com/",
+    publicPath: PUBLIC_PATH,
     filename: `static/js/[name]${isDev ? "" : "[hash:8]"}.js`,
-    // path: resolve(PROJECT_PATH, "./dist"),
+    path: resolve(PROJECT_PATH, "./dist"),
   },
 
   resolve: {
@@ -83,16 +83,16 @@ module.exports = {
         configFile: resolve(PROJECT_PATH, "./tsconfig.json"),
       },
     }),
-    // !isDev &&
     new MiniCssExtractPlugin({
       filename: "static/css/[name].[contenthash:8].css",
       chunkFilename: "static/css/[name].[contenthash:8].css",
       ignoreOrder: false,
     }),
     new HtmlWebpackPlugin({
-      title: "Flying-candy",
+      title: PROJECT_NAME,
       template: resolve(PROJECT_PATH, "./public/index.html"),
       filename: "index.html",
+      publicPath: PUBLIC_PATH,
       cache: false, // 特别重要：防止之后使用v6版本 copy-webpack-plugin 时代码修改一刷新页面为空问题。
       minify: isDev
         ? false

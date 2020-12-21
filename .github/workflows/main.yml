@@ -1,0 +1,26 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install coscmd
+        run: sudo pip install coscmd
+      - name: Configure coscmd
+        env:
+          SECRET_ID: ${{secrets.SecretId}}
+          SECRET_Key: ${{secrets.SecretKey}}
+          BUCKET: console-1300990907
+          REGION: ap-shanghai
+        run: coscmd config -a $SECRET_ID -s $SECRET_Key -b $BUCKET -r REGION
+      - name: Upload
+        run: coscmd upload -rs --delete -f ./dist /
+        
+      
+        
+       

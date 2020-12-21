@@ -2,7 +2,8 @@
 
 name: CI
 
-# Controls when the action will run. 
+# Controls when the action will run.
+
 on: [push]
 jobs:
   build:
@@ -20,7 +21,3 @@ jobs:
         run: coscmd config -a $SECRET_ID -s $SECRET_KEY -b $BUCKET -r REGION
       - name: Upload
         run: coscmd upload -rs --delete -f ./dist /
-        
-      
-        
-       

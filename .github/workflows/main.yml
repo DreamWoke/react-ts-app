@@ -19,11 +19,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+          registry-url: "https://registry.npmjs.org"
       - name: Install yarn # 安装yarn
         run: npm install yarn -g
       - name: Install dependencies # 安装依赖
         run: yarn install
-      - name: Install dependencies # 打包代码
+      - name: Build # 打包代码
         run: yarn build
       - name: Install coscmd
         run: sudo pip install coscmd

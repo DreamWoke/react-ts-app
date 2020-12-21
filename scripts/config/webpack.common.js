@@ -14,6 +14,7 @@ module.exports = {
     app: resolve(PROJECT_PATH, "./src/index.tsx"),
   },
   output: {
+    // publicPath: "https://console-1300990907.file.myqcloud.com/",
     filename: `static/js/[name]${isDev ? "" : "[hash:8]"}.js`,
     path: resolve(PROJECT_PATH, "./dist"),
   },

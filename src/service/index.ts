@@ -3,7 +3,7 @@ import axios, { AxiosPromise, AxiosRequestConfig } from "axios"
 import { getToken, removeToken } from "@/utils/token"
 // import store from "@/store"
 import { message, notification } from "antd"
-import { RequestList } from "@/service/modules"
+import RequestList from "@/service/modules"
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 interface ServiceParams<T extends keyof RequestList> extends AxiosRequestConfig {
@@ -88,7 +88,7 @@ AxiosInstance.interceptors.request.use((config) => {
 AxiosInstance.interceptors.response.use((response) => {
   const res = response.data
   if (res.code === 0) {
-    return res
+    return response
   }
   message.error(res.message || res.errorMsg || "Error")
   return Promise.reject(res)

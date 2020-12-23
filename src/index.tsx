@@ -7,7 +7,6 @@ import "@/style/basic.scss"
 if (module && module.hot) {
   module.hot.accept()
 }
-
 function App() {
   return <Router />
 }

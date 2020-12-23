@@ -3,62 +3,43 @@ import { PageHeader, Card } from "antd"
 import CarDialog from "@/pages/product/CarDialog"
 import ProductCard from "Components/ProductCard"
 import Service from "@/service"
+import { ProductType } from "@/service/modules/product"
 import "./index.scss"
 
-type dataType = {
-  id: string
-  name: string
-  price: number
-}
 const Product = () => {
-  const [data] = useState<dataType[]>([
-    { id: "1", name: "cars1", price: 200 },
-    { id: "2", name: "cars2", price: 100 },
-    { id: "3", name: "cars2", price: 100 },
-    { id: "4", name: "cars2", price: 100 },
-    { id: "5", name: "cars2", price: 100 },
-    { id: "6", name: "cars2", price: 100 },
-    { id: "7", name: "cars2", price: 100 },
-    { id: "8", name: "cars2", price: 100 },
-    { id: "9", name: "cars2", price: 100 },
-    { id: "10", name: "cars2", price: 100 },
-    { id: "11", name: "cars2", price: 100 },
-    { id: "12", name: "cars2", price: 100 },
-    { id: "13", name: "cars2", price: 100 },
-    { id: "14", name: "cars2", price: 100 },
-    { id: "15", name: "cars2", price: 100 },
-    { id: "16", name: "cars2", price: 100 },
-  ])
+  const [dataList, setDataList] = useState<ProductType[]>([])
   const [dialogVisible, setDialogVisible] = useState<boolean>(false)
-  const [chooseInfo, setChooseInfo] = useState<dataType>()
-  // useEffect(() => {
-  //   fetchData()
-  // }, [])
-  // const fetchData = () => {
-  //   Service({ url: "getProduct", method: "GET" }).then((res) => {
-  //     console.log(res)
-  //   })
-  // }
-  const openDialog = (Info: dataType) => {
+  const [chooseInfo, setChooseInfo] = useState<ProductType>()
+  useEffect(() => {
+    fetchData()
+  }, [])
+  const fetchData = () => {
+    Service({ url: "getProduct", method: "GET" }).then(({ data }) => {
+      console.log(data.data)
+      setDataList(data.data)
+    })
+  }
+  const openDialog = (Info: ProductType) => {
     setChooseInfo(Info)
     setDialogVisible(true)
   }
   const renderDialogBody = () => {
     return (
       <>
-        <div>id:{chooseInfo?.id}</div>
-        <div>名称:{chooseInfo?.name}</div>
+        <div>商品ID:{chooseInfo?.productId}</div>
+        <div>商品名称:{chooseInfo?.productName}</div>
         <div>价格:¥{chooseInfo?.price}</div>
+        <div>描述:{chooseInfo?.description}</div>
       </>
     )
   }
   return (
     <>
-      <PageHeader ghost={false} title="Car" />
+      <PageHeader ghost={false} title="商品列表" />
       <Card className="card-body">
         <div className="car-card">
-          {data.map((item) => {
-            return <ProductCard key={item.id} Info={item} addProduct={() => openDialog(item)} />
+          {dataList.map((item) => {
+            return <ProductCard key={item.productId} Info={item} addProduct={() => openDialog(item)} />
           })}
         </div>
       </Card>

@@ -6,7 +6,7 @@ import "./index.scss"
 interface CarDialogType {
   title: string
   visible: boolean
-  Info: any
+  Info: React.ReactNode
   onCancel: () => void
 }
 

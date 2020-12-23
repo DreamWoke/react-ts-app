@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom"
 import { Button, Form, Input } from "antd"
 import { setToken } from "@/utils/token"
 import Service from "@/service"
-import Axios from "axios"
 
 import "./index.scss"
 
@@ -22,16 +21,13 @@ interface loginFormType {
 const Login = () => {
   const history = useHistory()
   const [loading, setLoading] = useState<boolean>(false)
-  useEffect(() => {
-    Axios.get("/user")
-  }, [])
   const loginSubmit = (form: loginFormType) => {
     setLoading(true)
     Service({ url: "login", data: form })
       .then(({ data }) => {
         setToken(data.token)
         setLoading(false)
-        history.push("/cars")
+        history.push("/product")
       })
       .catch(() => {
         setLoading(false)

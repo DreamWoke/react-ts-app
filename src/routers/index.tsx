@@ -6,7 +6,7 @@ import Layout from "@/layout"
 import { getToken } from "@/utils/token"
 
 import Login from "@/pages/login"
-import First from "@/pages/product"
+import Product from "@/pages/product"
 import Second from "@/pages/second"
 import NotFound from "@/pages/404"
 
@@ -17,13 +17,13 @@ const App = () => {
       <Provider store={store}>
         <Switch>
           {/* login */}
-          <Route exact path="/" render={() => <Redirect to={isLogin ? "/cars" : "/login"} />} />
+          <Route exact path="/" render={() => <Redirect to={isLogin ? "/product" : "/login"} />} />
           <Route exact path="/login" component={Login} />
           <Route path="/404" exact component={NotFound} />
           {/* business */}
           <Layout>
             <Switch>
-              <Route exact path="/cars" component={First} />
+              <Route exact path="/product" component={Product} />
               <Route exact path="/second" component={Second} />
               <Redirect to={isLogin ? "/404" : "/login"} />
             </Switch>

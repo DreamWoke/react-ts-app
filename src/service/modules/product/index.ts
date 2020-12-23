@@ -2,8 +2,9 @@ import { RequestDefine } from ".."
 // import {} from "./param"
 import { GetProductResponse } from "./response"
 
-export interface Product {
+export interface ProductType {
   productId: string
+  productName: string
   price: number
   description: string
 }

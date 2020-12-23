@@ -1,7 +1,10 @@
 import UserApiMap from "./user"
+import ProductApiMap from "./product"
 
 export interface RequestDefine<P, R> {
   params: P
   response: R
 }
-export type RequestList = UserApiMap
+interface RequestList extends UserApiMap, ProductApiMap {}
+
+export default RequestList

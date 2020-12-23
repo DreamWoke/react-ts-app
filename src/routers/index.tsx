@@ -6,7 +6,7 @@ import Layout from "@/layout"
 import { getToken } from "@/utils/token"
 
 import Login from "@/pages/login"
-import First from "@/pages/cars"
+import First from "@/pages/product"
 import Second from "@/pages/second"
 import NotFound from "@/pages/404"
 

@@ -3,7 +3,7 @@ const path = require("path")
 const CONFIG_MAP = {
   developmentConfig: {
     PROJECT_NAME: "Flying-candy-dev",
-    PUBLIC_PATH: path.resolve(__dirname, "../dist"),
+    PUBLIC_PATH: "/",
   },
   productionConfig: {
     PROJECT_NAME: "Flying-candy",

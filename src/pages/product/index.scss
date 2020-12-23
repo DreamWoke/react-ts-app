@@ -1,0 +1,14 @@
+.card-body {
+  margin: 20px;
+  .car-card {
+    .card {
+      width: calc(100% / 5 - 20px);
+      float: left;
+      margin-right: calc(20px * 5 / 4);
+      margin-top: 20px;
+    }
+    .card:nth-child(5n) {
+      margin-right: 0;
+    }
+  }
+}

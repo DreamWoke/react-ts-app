@@ -25,7 +25,7 @@ const Login = () => {
     setLoading(true)
     Service({ url: "login", data: form })
       .then(({ data }) => {
-        setToken(data.token)
+        setToken(data.data.token)
         setLoading(false)
         history.push("/product")
       })

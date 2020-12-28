@@ -1,6 +1,6 @@
 import { RequestDefine } from ".."
-import { LoginParam, UserParam, LogoutParam } from "./param"
-import { LoginResponse, UserResponse, LogoutResponse } from "./response"
+import { LoginParam, UserParam, LogoutParam, UploadImgParam } from "./param"
+import { LoginResponse, UserResponse, LogoutResponse, UploadImgResponse } from "./response"
 
 export interface User {
   id: number
@@ -13,6 +13,7 @@ interface UserApiMap {
   login: RequestDefine<LoginParam, LoginResponse>
   user: RequestDefine<UserParam, UserResponse>
   logout: RequestDefine<LogoutParam, LogoutResponse>
+  upload: RequestDefine<UploadImgParam, UploadImgResponse>
 }
 
 export default UserApiMap

@@ -7,7 +7,7 @@ const fetchUserInfo = () => {
   return new Promise((resolve, reject) => {
     Service({ url: "user", method: "GET" })
       .then(({ data }) => {
-        resolve(data)
+        resolve(data.data)
       })
       .catch((error) => {
         reject(error)

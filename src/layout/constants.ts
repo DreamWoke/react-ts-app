@@ -1,7 +1,7 @@
 const SlideMap = [
   {
     key: "product",
-    name: "商品",
+    name: "product",
     pathname: "/product",
     auth: true,
   },

@@ -7,3 +7,6 @@ export type LoginResponse = CommonResponse<{
 
 export type UserResponse = CommonResponse<User>
 export type LogoutResponse = CommonResponse<any>
+export type UploadImgResponse = CommonResponse<{
+  url: string
+}>

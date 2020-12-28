@@ -4,4 +4,7 @@ export type LoginParam = {
 }
 
 export type UserParam = any
+
 export type LogoutParam = any
+
+export type UploadImgParam = FormData

@@ -23,7 +23,7 @@ const AxiosInstance = axios.create({
   // baseURL: "/api",
 })
 
-const processError = async (error: any) => {
+const processError = (error: any) => {
   // 这边处理http的错误状态 而不处理返回中的如  respCode 的错误信息
   if (error && error.response) {
     const { status } = error.response
@@ -33,7 +33,7 @@ const processError = async (error: any) => {
         break
       case 401:
         error.message = "未授权，请登录"
-        await removeToken()
+        removeToken()
         window.location.href = "/login"
         break
       case 403:
@@ -66,15 +66,12 @@ const processError = async (error: any) => {
       default:
         break
     }
-    return ""
   }
-
   // 错误提醒
   notification.error({
     message: "系统错误",
-    description: error.message,
+    description: error.message || "",
   })
-
   return Promise.reject(error)
 }
 // 拦截器

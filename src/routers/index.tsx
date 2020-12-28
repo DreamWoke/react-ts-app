@@ -7,6 +7,7 @@ import { getToken } from "@/utils/token"
 
 import Login from "@/pages/login"
 import Product from "@/pages/product"
+import AddProduct from "@/pages/product/add"
 import Second from "@/pages/second"
 import NotFound from "@/pages/404"
 
@@ -24,6 +25,7 @@ const App = () => {
           <Layout>
             <Switch>
               <Route exact path="/product" component={Product} />
+              <Route exact path="/product/add" component={AddProduct} />
               <Route exact path="/second" component={Second} />
               <Redirect to={isLogin ? "/404" : "/login"} />
             </Switch>

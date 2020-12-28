@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react"
-import { PageHeader, Card } from "antd"
-import CarDialog from "@/pages/product/CarDialog"
+import { PageHeader, Card, Button } from "antd"
+import CarDialog from "@/pages/product/components/CarDialog"
 import ProductCard from "Components/ProductCard"
+import { useHistory } from "react-router-dom"
 import Service from "@/service"
 import { ProductType } from "@/service/modules/product"
 import "./index.scss"
 
 const Product = () => {
+  const history = useHistory()
   const [dataList, setDataList] = useState<ProductType[]>([])
   const [dialogVisible, setDialogVisible] = useState<boolean>(false)
   const [chooseInfo, setChooseInfo] = useState<ProductType>()
@@ -23,6 +25,9 @@ const Product = () => {
     setChooseInfo(Info)
     setDialogVisible(true)
   }
+  const toAdd = () => {
+    history.push("/product/add")
+  }
   const renderDialogBody = () => {
     return (
       <>
@@ -34,8 +39,11 @@ const Product = () => {
     )
   }
   return (
-    <>
-      <PageHeader ghost={false} title="商品列表" />
+    <div className="product">
+      <PageHeader ghost={false} title="list" />
+      <Button type="primary" className="add-btn" onClick={toAdd}>
+        add
+      </Button>
       <Card className="card-body">
         <div className="car-card">
           {dataList.map((item) => {
@@ -49,7 +57,7 @@ const Product = () => {
         Info={renderDialogBody()}
         onCancel={() => setDialogVisible(false)}
       />
-    </>
+    </div>
   )
 }
 

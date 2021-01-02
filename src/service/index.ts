@@ -83,10 +83,11 @@ AxiosInstance.interceptors.request.use((config) => {
 })
 
 AxiosInstance.interceptors.response.use((response) => {
+  console.log(response)
   const res = response.data
-  if (res.code === 0) {
-    return response
-  }
+  // if (res.code === 0) {
+  return response
+  // }
   message.error(res.message || res.errorMsg || "Error")
   return Promise.reject(res)
 }, processError)

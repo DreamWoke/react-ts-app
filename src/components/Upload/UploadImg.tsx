@@ -19,54 +19,10 @@ const PicturesWall = () => {
     previewTitle: "",
     fileList: [],
   })
-  //   state = {
-  //     previewVisible: false,
-  //     previewImage: '',
-  //     previewTitle: '',
-  //     fileList: [
-  //   {
-  //     uid: '-1',
-  //     name: 'image.png',
-  //     status: 'done',
-  //     url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-  //   },
-  //   {
-  //     uid: '-2',
-  //     name: 'image.png',
-  //     status: 'done',
-  //     url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-  //   },
-  //   {
-  //     uid: '-3',
-  //     name: 'image.png',
-  //     status: 'done',
-  //     url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-  //   },
-  //   {
-  //     uid: '-4',
-  //     name: 'image.png',
-  //     status: 'done',
-  //     url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-  //   },
-  //   {
-  //     uid: '-xxx',
-  //     percent: 50,
-  //     name: 'image.png',
-  //     status: 'uploading',
-  //     url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png',
-  //   },
-  //   {
-  //     uid: '-5',
-  //     name: 'image.png',
-  //     status: 'error',
-  //   },
-  // ],
-  // };
 
   const handleCancel = () => {
     setParam({ ...param, previewVisible: false })
   }
-
   const handlePreview = async (file: any) => {
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj)
@@ -80,11 +36,11 @@ const PicturesWall = () => {
   }
 
   const handleChange = ({ fileList }: any) => {
-    console.log(fileList, "83")
+    console.log(fileList)
     setParam({ ...param, fileList })
   }
   const upload = (files: any) => {
-    // const { onSuccess } = files
+    const { onSuccess } = files
     console.log(files.file)
     const formData = new FormData()
     formData.append("file", files.file)
@@ -96,9 +52,7 @@ const PicturesWall = () => {
         "content-type": "multipart/form-data",
       },
     }).then(({ data }) => {
-      console.log(data.data.url)
-
-      // onSuccess(data, files.file)
+      onSuccess(data, data.data.url)
     })
   }
   const { previewVisible, previewImage, fileList, previewTitle } = param
@@ -121,7 +75,7 @@ const PicturesWall = () => {
         onPreview={handlePreview}
         onChange={handleChange}
       >
-        {fileList.length >= 8 ? null : uploadButton}
+        {fileList.length > 0 ? null : uploadButton}
       </Upload>
       <Modal visible={previewVisible} title={previewTitle} footer={null} onCancel={handleCancel}>
         <img alt="example" style={{ width: "100%", fontSize: "20px" }} src={previewImage} />

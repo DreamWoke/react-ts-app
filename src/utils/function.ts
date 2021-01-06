@@ -7,3 +7,4 @@
 //       // elink.download = "pig.png"
 //       elink.src = URL.createObjectURL(blob)
 //       document.body.append(elink)
+export {}

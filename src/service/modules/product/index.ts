@@ -1,6 +1,7 @@
 import { RequestDefine } from ".."
 // import {} from "./param"
-import { GetProductResponse } from "./response"
+import { AddProductParam } from "./param"
+import { GetProductResponse, AddProductResponse } from "./response"
 
 export interface ProductType {
   productId: string
@@ -11,6 +12,7 @@ export interface ProductType {
 
 interface ProductApiMap {
   getProduct: RequestDefine<any, GetProductResponse>
+  addProduct: RequestDefine<AddProductParam, AddProductResponse>
 }
 
 export default ProductApiMap

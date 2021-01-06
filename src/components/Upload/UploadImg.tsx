@@ -84,19 +84,21 @@ const PicturesWall = () => {
     setParam({ ...param, fileList })
   }
   const upload = (files: any) => {
-    const { onSuccess } = files
+    // const { onSuccess } = files
     console.log(files.file)
     const formData = new FormData()
     formData.append("file", files.file)
     Service({
       url: "upload",
       data: formData,
+      // responseType: "arraybuffer",
       headers: {
         "content-type": "multipart/form-data",
       },
     }).then(({ data }) => {
-      console.log(data)
-      onSuccess(data, files.file)
+      console.log(data.data.url)
+
+      // onSuccess(data, files.file)
     })
   }
   const { previewVisible, previewImage, fileList, previewTitle } = param

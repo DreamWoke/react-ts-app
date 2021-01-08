@@ -7,6 +7,7 @@ export interface ProductType {
   productId: string
   productName: string
   price: number
+  productImg: string
   description: string
 }
 

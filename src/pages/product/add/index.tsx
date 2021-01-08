@@ -1,6 +1,7 @@
-import React from "react"
-import { PageHeader, Card, Form, Button, Input, InputNumber } from "antd"
+import React, { useState } from "react"
+import { PageHeader, Card, Form, Button, Input, InputNumber, message } from "antd"
 import UploadImg from "Components/Upload/UploadImg"
+import { UploadFile } from "antd/lib/upload/interface"
 import { useHistory } from "react-router-dom"
 import Service from "@/service"
 import "./index.scss"
@@ -12,10 +13,11 @@ interface ProductType {
 }
 const AddProduct = () => {
   const history = useHistory()
+  const [fileList, setFileList] = useState<UploadFile[] | any>([])
   const submitForm = (val: ProductType) => {
-    console.log(val)
-    Service({ url: "addProduct", data: val }).then(({ data }) => {
-      // console.log(data.data.url)
+    Service({ url: "addProduct", data: { ...val, productImg: fileList[0].url } }).then(() => {
+      message.success("新增成功")
+      history.go(-1)
     })
   }
   const layout = {
@@ -35,10 +37,15 @@ const AddProduct = () => {
             <Input placeholder="请填写商品名称" />
           </Form.Item>
           <Form.Item required label="商品售价" name="price">
-            <InputNumber min={0} max={100000} />
+            <InputNumber min={0} max={10000000} />
           </Form.Item>
           <Form.Item required label="商品图片" name="productImg">
-            <UploadImg />
+            <UploadImg
+              fileList={fileList}
+              fileChange={(uploadFiles: UploadFile[]) => {
+                setFileList(uploadFiles)
+              }}
+            />
           </Form.Item>
           <Form.Item required label="描述" name="description">
             <Input.TextArea autoSize className="textarea" placeholder="请填写描述" />

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useState } from "react"
 import { useHistory } from "react-router-dom"
 import { Button, Form, Input } from "antd"
 import { setToken } from "@/utils/token"

@@ -2,7 +2,7 @@ const path = require("path")
 const { resolve } = path
 const TerserPlugin = require("terser-webpack-plugin")
 const { isDev, PROJECT_NAME, PROJECT_PATH, PUBLIC_PATH } = require("../constants")
-const WebpackBar = require("webpackbar")
+// const WebpackBar = require("webpackbar")
 const CopyPlugin = require("copy-webpack-plugin")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
@@ -73,10 +73,10 @@ module.exports = {
     ],
   },
   plugins: [
-    new WebpackBar({
-      name: isDev ? "启动中..." : "打包中...",
-      color: "green",
-    }),
+    // new WebpackBar({
+    //   name: isDev ? "启动中..." : "打包中...",
+    //   color: "green",
+    // }),
     new ForkTsCheckerWebpackPlugin({
       //ts错误显示在终端中
       typescript: {

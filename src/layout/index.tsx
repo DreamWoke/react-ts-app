@@ -16,12 +16,12 @@ const BaseLayout = (props: any) => {
   const dispatch = useDispatch()
 
   const history = useHistory()
-  const [selectKey, setSelectKey] = useState<string>("")
+  const [selectKey, setSelectKey] = useState<React.Key>()
 
   useEffect(() => {
     const { location } = history
     const activeSlide = SlideMap.find((item) => item.pathname === location.pathname)
-    setSelectKey(activeSlide?.key || SlideMap[0].key)
+    // setSelectKey(activeSlide?.key || SlideMap[0].key)
     const token = getToken()
     if (token) {
       // 获取用户信息存到redux中
@@ -31,7 +31,7 @@ const BaseLayout = (props: any) => {
     }
   }, [history])
 
-  const handleClick = (e: any) => {
+  const handleClick = (e: { key: React.Key }) => {
     setSelectKey(e.key)
   }
   return (

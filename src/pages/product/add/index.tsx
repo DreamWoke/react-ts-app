@@ -13,7 +13,7 @@ interface ProductType {
 }
 const AddProduct = () => {
   const history = useHistory()
-  const [fileList, setFileList] = useState<UploadFile[] | any>([])
+  const [fileList, setFileList] = useState<{ url: string }[]>([])
   const submitForm = (val: ProductType) => {
     Service({ url: "addProduct", data: { ...val, productImg: fileList[0].url } }).then(() => {
       message.success("新增成功")
@@ -41,9 +41,9 @@ const AddProduct = () => {
           </Form.Item>
           <Form.Item required label="商品图片" name="productImg">
             <UploadImg
-              fileList={fileList}
-              fileChange={(uploadFiles: UploadFile[]) => {
-                setFileList(uploadFiles)
+              files={fileList}
+              fileChange={(files: { url: string }[]) => {
+                setFileList(files)
               }}
             />
           </Form.Item>
